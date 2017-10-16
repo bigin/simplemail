@@ -1,20 +1,20 @@
 <?php
 
-class SimpleMailWidget extends WP_Widget
+class SimpleMailerWidget extends WP_Widget
 {
 	public function __construct()
 	{
 		// Set base values for the widget
 		parent::__construct(
-			'SimpleMailWidget',
-			'SimpleMail Widget',
-			array('description' => 'A widget that displays SimpleMail contact form')
+			'SimpleMailerWidget',
+			'SimpleMailer Widget',
+			array('description' => 'A widget that displays SimpleMailer contact form')
 		);
 		add_action('widgets_init', array($this, 'register'));
 	}
 
 	public function register() {
-		register_widget('SimpleMailWidget');
+		register_widget('SimpleMailerWidget');
 	}
 
 	public function widget($args, $instance) {

@@ -1,8 +1,8 @@
 <?php defined('ABSPATH') or die('Yes, you\'re a real hacker!');
 /**
-* Plugin Name: SimpleMail
-* Plugin URI: https://ehret-studio.com/lab/simplemail-kontaktformular-plugin-fur-wordpress/
-* Description: SimpleMail - Contact form plugin
+* Plugin Name: SimpleMailer
+* Plugin URI: https://ehret-studio.com/lab/simplemailer-kontaktformular-plugin-fur-wordpress/
+* Description: SimpleMailer - Contact form plugin
 * Version: 0.9
 * Author: Juri Ehret
 * Author URI: https://ehret-studio.com

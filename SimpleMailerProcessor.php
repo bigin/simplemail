@@ -1,9 +1,9 @@
 <?php
 
-class SimpleMailProcessor
+class SimpleMailerProcessor
 {
 	/**
-	 * @var null - SimpleMail class instance
+	 * @var null - SimpleMailer class instance
 	 */
 	private $sm = null;
 
@@ -15,19 +15,19 @@ class SimpleMailProcessor
 
 
 	/**
-	 * @var null|SimpleMailWidget - WP Widget
+	 * @var null|SimpleMailerWidget - WP Widget
 	 */
 	public $widget = null;
 
 
 	/**
-	 * SimpleMailProcessor constructor.
+	 * SimpleMailerProcessor constructor.
 	 *
 	 * @param $sm
 	 */
 	public function __construct($sm) {
 		$this->sm = $sm;
-		$this->widget = new SimpleMailWidget();
+		$this->widget = new SimpleMailerWidget();
 	}
 
 
@@ -96,8 +96,8 @@ class SimpleMailProcessor
 	public function createAdminMenu()
 	{
 		// Create a new options menu
-		add_options_page(__('SimpleMail Settings', 'sm'),
-			__('SimpleMail', 'sm'),
+		add_options_page(__('SimpleMailer Settings', 'sm'),
+			__('SimpleMailer', 'sm'),
 			'administrator',
 			'sm',
 			array($this, 'renderConfigPage')
@@ -137,7 +137,7 @@ class SimpleMailProcessor
 		if($this->sm->config->displayFormOnPageId &&
 			$this->sm->config->displayFormOnPageId != $obj->ID) { return; }
 
-		add_shortcode('simplemail', array($this, 'contentFilter'));
+		add_shortcode('simplemailer', array($this, 'contentFilter'));
 
 		$output = '';
 		if($this->sm->config->includeStyles) {
@@ -185,10 +185,10 @@ class SimpleMailProcessor
 	{
 		$this->sm->config->init();
 
-		$formWrapper = new SimpleMailWrapper();
+		$formWrapper = new SimpleMailerWrapper();
 		$formWrapper->class = 'sm-form-wrapper';
 
-		$form = new SimpleMailForm();
+		$form = new SimpleMailerForm();
 		$form->novalidate = $this->sm->config->noValidateClientSide;
 		// Do not allow dynamic form names, if someone wants it, they have to pay for it
 		$form->name = 'contact';
@@ -198,14 +198,14 @@ class SimpleMailProcessor
 			$form->enctype = 'multipart/form-data';
 		}
 
-		$fieldset = new SimpleMailFieldset();
+		$fieldset = new SimpleMailerFieldset();
 		$fieldset->legend = $this->sm->config->getText('legend_caption');
 
 		// Field "Name"
-		$fieldWrapper = new SimpleMailWrapper();
-		$fieldLabel = new SimpleMailLabel();
+		$fieldWrapper = new SimpleMailerWrapper();
+		$fieldLabel = new SimpleMailerLabel();
 		$fieldLabel->for = 'sendername';
-		$input = new SimpleMailInput();
+		$input = new SimpleMailerInput();
 		$input->class = 'form-control';
 		$input->id = 'sendername';
 		$input->name = 'sendername';
@@ -224,10 +224,10 @@ class SimpleMailProcessor
 		$fieldset->add($fieldWrapper);
 
 		// Field "E-Mail"
-		$fieldWrapper = new SimpleMailWrapper();
-		$fieldLabel = new SimpleMailLabel();
+		$fieldWrapper = new SimpleMailerWrapper();
+		$fieldLabel = new SimpleMailerLabel();
 		$fieldLabel->for = 'email';
-		$input = new SimpleMailInput();
+		$input = new SimpleMailerInput();
 		$input->class = 'form-control';
 		$input->id = 'email';
 		$input->type = 'email';
@@ -250,10 +250,10 @@ class SimpleMailProcessor
 		// Field "Phone"
 		if((int)$this->sm->config->show_phone == 1)
 		{
-			$fieldWrapper = new SimpleMailWrapper();
-			$fieldLabel = new SimpleMailLabel();
+			$fieldWrapper = new SimpleMailerWrapper();
+			$fieldLabel = new SimpleMailerLabel();
 			$fieldLabel->for = 'phone';
-			$input = new SimpleMailInput();
+			$input = new SimpleMailerInput();
 			$input->class = 'form-control';
 			$input->id = 'phone';
 			$input->type = 'tel';
@@ -276,10 +276,10 @@ class SimpleMailProcessor
 		// Field "Subject"
 		if((int)$this->sm->config->show_subject == 1)
 		{
-			$fieldWrapper = new SimpleMailWrapper();
-			$fieldLabel = new SimpleMailLabel();
+			$fieldWrapper = new SimpleMailerWrapper();
+			$fieldLabel = new SimpleMailerLabel();
 			$fieldLabel->for = 'subject';
-			$input = new SimpleMailInput();
+			$input = new SimpleMailerInput();
 			$input->class = 'form-control';
 			$input->id = 'subject';
 			$input->name = 'subject';
@@ -299,10 +299,10 @@ class SimpleMailProcessor
 		}
 
 		// Textarea "Message"
-		$fieldWrapper = new SimpleMailWrapper();
-		$fieldLabel = new SimpleMailLabel();
+		$fieldWrapper = new SimpleMailerWrapper();
+		$fieldLabel = new SimpleMailerLabel();
 		$fieldLabel->for = 'message';
-		$textarea = new SimpleMailTextarea();
+		$textarea = new SimpleMailerTextarea();
 		$textarea->id = 'message';
 		$textarea->class = 'form-control';
 		$textarea->name = 'message';
@@ -324,10 +324,10 @@ class SimpleMailProcessor
 		// Field "Files"
 		if((int)$this->sm->config->send_attachments == 1)
 		{
-			$fieldWrapper = new SimpleMailWrapper();
-			$fieldLabel = new SimpleMailLabel();
+			$fieldWrapper = new SimpleMailerWrapper();
+			$fieldLabel = new SimpleMailerLabel();
 			$fieldLabel->for = 'attachments';
-			$input = new SimpleMailInput();
+			$input = new SimpleMailerInput();
 			$input->class = 'form-control';
 			$input->id = 'attachments';
 			$input->name = 'attachments';
@@ -349,13 +349,13 @@ class SimpleMailProcessor
 		}
 
 		// Honey pot
-		$fieldWrapper = new SimpleMailWrapper();
+		$fieldWrapper = new SimpleMailerWrapper();
 		$fieldWrapper->class = 'field-wrapper hey-honey';
 		$fieldWrapper->style = 'display:none;';
-		$fieldLabel = new SimpleMailLabel();
+		$fieldLabel = new SimpleMailerLabel();
 		$fieldLabel->for = 'honey';
 		$fieldLabel->add('Please leave this field empty - we\'re using it to stop robots submitting the form<br>');
-		$input = new SimpleMailInput();
+		$input = new SimpleMailerInput();
 		$input->type = 'text';
 		$input->class = 'form-control';
 		$input->name = 'honey';
@@ -367,26 +367,26 @@ class SimpleMailProcessor
 		// Google reCaptcha
 		if((int)$this->sm->config->recaptcha == 1)
 		{
-			$reCaptcha = new SimpleMailReCaptcha();
+			$reCaptcha = new SimpleMailerReCaptcha();
 			$reCaptcha->site_key = $this->sm->config->site_key;
 			$fieldset->add($reCaptcha);
 		}
 
 		// Submit button
-		$fieldWrapper = new SimpleMailWrapper();
-		$button = new SimpleMailButton();
+		$fieldWrapper = new SimpleMailerWrapper();
+		$button = new SimpleMailerButton();
 		$button->class = 'button primary';
 		$button->id = 'submit';
 		$button->add(__('Send message', 'sm'));
 		// Action field
-		$input = new SimpleMailInput();
+		$input = new SimpleMailerInput();
 		$input->type = 'hidden';
 		$input->name = 'action';
 		$input->value = 'sm_form_sent';
 		$fieldWrapper->add($input);
 		// Add AJAX indicator
 		if($this->sm->config->useAjax == true) {
-			$input = new SimpleMailInput();
+			$input = new SimpleMailerInput();
 			$input->type = 'hidden';
 			$input->name = 'isajax';
 			$input->value = 1;
@@ -399,7 +399,7 @@ class SimpleMailProcessor
 
 		// Render delay block
 		if($this->sm->config->useAjax == true) {
-			$js = new SimpleMailJsBlocks();
+			$js = new SimpleMailerJsBlocks();
 			$js->delaytext = __('Please wait...', 'sm');
 			$formWrapper->add($js->renderDelay());
 		}
@@ -431,7 +431,7 @@ class SimpleMailProcessor
 		$this->sm->config->init();
 		?>
 		<div class="wrap">
-			<h1>SimpleMail</h1>
+			<h1>SimpleMailer</h1>
 			<?php echo $this->sm->reporter->renderMsgs(); ?>
 			<div class="edit-forms-panel">
 				<form method="post" action="">
@@ -452,7 +452,7 @@ class SimpleMailProcessor
 							<div class="form-group">
 								<label for="emailfrom"><?php echo __('Email Address', 'sm'); ?> <span class="required">*</span></label><br>
 								<p class="field-info"><?php echo
-									__('Your email address. This is the email address to which the SimpleMail will send all the messages.', 'sm'); ?></p>
+									__('Your email address. This is the email address to which the SimpleMailer will send all the messages.', 'sm'); ?></p>
 								<input id="emailfrom" name="emailfrom" class="form-control" type="email" value="<?php
 								echo (($this->sm->config->emailfrom) ? $this->sm->config->emailfrom : ''); ?>" required="required">
 							</div>
@@ -822,7 +822,7 @@ class SimpleMailProcessor
 		{ $confcompleted = false; }
 		if(!$confcompleted) {
 			$this->sm->reporter->setMsg('error',
-				__('The configuration of the SimpleMail plugin was not completed. Please complete the configuration in the administrator area!', 'sm'));
+				__('The configuration of the SimpleMailer plugin was not completed. Please complete the configuration in the administrator area!', 'sm'));
 		}
 
 		if($this->sm->reporter->isError()) return false;
@@ -835,7 +835,7 @@ class SimpleMailProcessor
 	 */
 	protected function sendMail($redirect = true)
 	{
-		$mailer = new SimpleMailMailer($this->sm->config);
+		$mailer = new SimpleMailerMailer($this->sm->config);
 
 		// SMTP isn't enabled
 		if((int)$this->sm->config->smtp != 1) {
@@ -931,5 +931,5 @@ class SimpleMailProcessor
 	 * Uninstall plugin
 	 *
 	 */
-	public static function uninstall() { SimpleMailConfig::uninstallConfig(); }
+	public static function uninstall() { SimpleMailerConfig::uninstallConfig(); }
 }

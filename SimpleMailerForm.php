@@ -1,6 +1,6 @@
 <?php
 
-class SimpleMailForm
+class SimpleMailerForm
 {
 	public $class = null;
 	public $id = null;
@@ -39,7 +39,7 @@ class SimpleMailForm
 }
 
 
-class SimpleMailInput
+class SimpleMailerInput
 {
 	public $type = 'text';
 	public $class = null;
@@ -78,7 +78,7 @@ class SimpleMailInput
 }
 
 
-class SimpleMailFieldset
+class SimpleMailerFieldset
 {
 	public $class = null;
 	public $id = null;
@@ -107,7 +107,7 @@ class SimpleMailFieldset
 }
 
 
-class SimpleMailLabel
+class SimpleMailerLabel
 {
 	public $class = null;
 	public $id = null;
@@ -139,7 +139,7 @@ class SimpleMailLabel
 }
 
 
-class SimpleMailWrapper
+class SimpleMailerWrapper
 {
 	public $tag = 'div';
 	public $class = 'form-group';
@@ -167,7 +167,7 @@ class SimpleMailWrapper
 }
 
 
-class SimpleMailTextarea
+class SimpleMailerTextarea
 {
 	public $class = null;
 	public $id = null;
@@ -204,7 +204,7 @@ class SimpleMailTextarea
 }
 
 
-class SimpleMailReCaptcha
+class SimpleMailerReCaptcha
 {
 	public $site_key = null;
 	public $class = 'g-recaptcha';
@@ -217,7 +217,7 @@ class SimpleMailReCaptcha
 }
 
 
-class SimpleMailButton
+class SimpleMailerButton
 {
 	public $type = 'submit';
 	public $class = null;
@@ -245,7 +245,7 @@ class SimpleMailButton
 }
 
 
-class SimpleMailJsBlocks
+class SimpleMailerJsBlocks
 {
 	public $button = '#submit';
 	public $stopdelay = '#stop-delay';

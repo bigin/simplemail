@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Class SimpleMail
+ * Class SimpleMailer
  * A SM wrapper class
  */
-class SimpleMail
+class SimpleMailer
 {
 
 	/**
@@ -14,25 +14,25 @@ class SimpleMail
 
 
 	/**
-	 * @var null|SimpleMailReporter - Messages reporter class
+	 * @var null|SimpleMailerReporter - Messages reporter class
 	 */
 	public $reporter = null;
 
 
 	/**
-	 * @var null|SimpleMailConfig - The instance of SimpleMailConfig class
+	 * @var null|SimpleMailerConfig - The instance of SimpleMailerConfig class
 	 */
 	public $config = null;
 
 
 	/**
-	 * @var null|SimpleMailSanitizer - Sanitizer instance
+	 * @var null|SimpleMailerSanitizer - Sanitizer instance
 	 */
 	public $sanitizer = null;
 
 
 	/**
-	 * @var null|SimpleMailProcessor - Controller instance
+	 * @var null|SimpleMailerProcessor - Controller instance
 	 */
 	public $processor = null;
 
@@ -46,7 +46,7 @@ class SimpleMail
 
 
 	/**
-	 * SimpleMail constructor
+	 * SimpleMailer constructor
 	 *
 	 * 1. Let's make the WPDB class local available.
 	 * 2. Create error reporter instance.
@@ -59,15 +59,15 @@ class SimpleMail
 	{
 		global $wpdb;
 		$this->db = $wpdb;
-		$this->reporter = new SimpleMailReporter();
-		$this->sanitizer = new SimpleMailSanitizer();
-		$this->config = new SimpleMailConfig($this);
-		$this->processor = new SimpleMailProcessor($this);
+		$this->reporter = new SimpleMailerReporter();
+		$this->sanitizer = new SimpleMailerSanitizer();
+		$this->config = new SimpleMailerConfig($this);
+		$this->processor = new SimpleMailerProcessor($this);
 	}
 
 
 	/**
-	 * Initialize SimpleMail plugin
+	 * Initialize SimpleMailer plugin
 	 *
 	 * Register variables, session, language on init.
 	 * Add our frontend SM includes as required.
@@ -83,7 +83,7 @@ class SimpleMail
 
 		// Admin only stuff
 		register_activation_hook($this->config->pluginFile, array($this->processor, 'install'));
-		register_uninstall_hook($this->config->pluginFile, 'SimpleMailProcessor::uninstall');
+		register_uninstall_hook($this->config->pluginFile, 'SimpleMailerProcessor::uninstall');
 		add_action('admin_menu', array($this->processor, 'createAdminMenu'));
 		add_action('admin_head', array($this->processor, 'addSmAdminHeader'));
 		add_filter('plugin_action_links', array($this->processor, 'editActionLinks'), 10, 2);

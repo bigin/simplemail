@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') or die('Yes, you\'re a real hacker!');
 /**
- * NOTE: In order to have seperate configs for your SimpleMail plugin,
+ * NOTE: In order to have seperate configs for your SimpleMailer plugin,
  * rename this file from custom.config.php to config.php.
  * The configuration system integrates these override values automatically.
  */
@@ -23,7 +23,7 @@ $this->displayFormOnPageId = null;
 $this->includeHeader = true;
 
 	/**
-	 * Includes SimpleMail stylesheets within the head section
+	 * Includes SimpleMailer stylesheets within the head section
 	 *
 	 * @var bool
 	 */
@@ -55,6 +55,11 @@ $this->noValidateClientSide = false;
  * @var string
  */
 $this->emailLanguage = 'en';
+
+/**
+ * @var string - PHPMailer character encoding
+ */
+$this->emailCharSet = 'UTF-8';
 
 /**
  * @var int - The maximum number of file attachments

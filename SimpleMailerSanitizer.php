@@ -1,14 +1,14 @@
 <?php
 /**
- * SimpleMail Sanitizer
+ * SimpleMailer Sanitizer
  *
- * Sanitizer provides shared sanitization functions as commonly used throughout SimpleMail core
+ * Sanitizer provides shared sanitization functions as commonly used throughout SimpleMailer core
  *
  * @method array($value, $sanitizer = null, array $options = array())
  *
  */
 
-class SimpleMailSanitizer {
+class SimpleMailerSanitizer {
 
 	/**
 	 * May be passed to pageName for the $beautify param, see pageName for details.

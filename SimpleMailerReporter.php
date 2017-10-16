@@ -1,6 +1,6 @@
 <?php
 
-class SimpleMailReporter
+class SimpleMailerReporter
 {
 	protected $msgs = array();
 	protected $error = false;

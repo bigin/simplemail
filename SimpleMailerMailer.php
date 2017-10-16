@@ -1,7 +1,7 @@
 <?php
 include(ABSPATH.'wp-includes/class-phpmailer.php');
 
-class SimpleMailMailer extends \PHPMailer
+class SimpleMailerMailer extends \PHPMailer
 {
 	protected $config;
 
@@ -15,6 +15,7 @@ class SimpleMailMailer extends \PHPMailer
 	{
 		try
 		{
+			$this->CharSet = $this->config->emailCharSet;
 			if($this->config->smtp == 1) $this->isSMTP();
 			$this->setLanguage($this->config->emailLanguage);
 			$this->SMTPDebug = $this->config->debug;
@@ -35,7 +36,7 @@ class SimpleMailMailer extends \PHPMailer
 		} catch (phpmailerException $e)
 		{
 			$error = $e->errorMessage();
-			SimpleMailReporter::writeLog($error);
+			SimpleMailerReporter::writeLog($error);
 			return false;
 		}
 	}
@@ -45,9 +46,9 @@ class SimpleMailMailer extends \PHPMailer
 		$o = '';
 		ob_start();
 		if(!parent::send()) {
-			SimpleMailReporter::writeLog('Mailer Error: ' . $this->ErrorInfo);
+			SimpleMailerReporter::writeLog('Mailer Error: ' . $this->ErrorInfo);
 			$o = ob_get_clean();
-			SimpleMailReporter::writeLog($o);
+			SimpleMailerReporter::writeLog($o);
 			@ob_end_clean();
 			return false;
 		}

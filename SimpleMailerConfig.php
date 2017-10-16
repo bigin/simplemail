@@ -1,6 +1,6 @@
 <?php
 
-class SimpleMailConfig
+class SimpleMailerConfig
 {
 	/**
 	 * @var null - WP Database instance
@@ -70,7 +70,7 @@ class SimpleMailConfig
 	public $includeHeader = true;
 
 		/**
-		 * Includes SimpleMail stylesheets within the head section
+		 * Includes SimpleMailer stylesheets within the head section
 		 *
 		 */
 		public $includeStyles = true;
@@ -97,6 +97,11 @@ class SimpleMailConfig
 	 * @var string - email language
 	 */
 	public $emailLanguage = 'en';
+
+	/**
+	 * @var string PHPMailer character encoding
+	 */
+	public $emailCharSet = 'UTF-8';
 
 	/**
 	 * @var null|integer - Page id for display form on it
@@ -139,16 +144,16 @@ class SimpleMailConfig
 
 
 	/**
-	 * SimpleMailConfig constructor.
+	 * SimpleMailerConfig constructor.
 	 * Overrides default config values
 	 *
-	 * @param $sm object - SimpleMailClass
+	 * @param $sm object - SimpleMailerClass
 	 */
 	public function __construct($sm)
 	{
 		if(file_exists(__DIR__.'/config.php')) include(__DIR__.'/config.php');
 		$this->db = $sm->db;
-		$this->tablename = $this->db->prefix.'simplemail';
+		$this->tablename = $this->db->prefix.'simplemailer';
 		$this->reporter = $sm->reporter;
 		$this->sanitizer = $sm->sanitizer;
 		$this->allowedAdminRoles = $sm->allowedAdminRoles;
@@ -308,11 +313,11 @@ class SimpleMailConfig
 				array('%s', '%s'),
 				array('%s')
 			)) {
-				SimpleMailReporter::writeLog('MySQL-Error when updating ' . $name . ' value');
+				SimpleMailerReporter::writeLog('MySQL-Error when updating ' . $name . ' value');
 				$this->reporter->setMsg('warning', __('The settings may not have been saved completely. Turn error reporting on to get more detailed error information in the debug.log file.', 'sm'));
 			}
 		}
-		$this->reporter->setMsg('success', __('SimpleMail settings have been saved successfully.', 'sm'));
+		$this->reporter->setMsg('success', __('SimpleMailer settings have been saved successfully.', 'sm'));
 	}
 
 
@@ -357,7 +362,7 @@ class SimpleMailConfig
 	{
 		$this->pluginData = get_plugin_data($this->pluginFile);
 		if(empty($this->pluginData['Version'])) {
-			SimpleMailReporter::writeLog('SimpleMail Error when installing the plugin: "Cannot read version number"');
+			SimpleMailerReporter::writeLog('SimpleMailer Error when installing the plugin: "Cannot read version number"');
 			return false;
 		}
 		$this->init();
