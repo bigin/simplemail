@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sm\n"
-"POT-Creation-Date: 2017-10-16 08:49+0200\n"
-"PO-Revision-Date: 2017-10-16 08:52+0200\n"
+"POT-Creation-Date: 2017-10-18 11:47+0200\n"
+"PO-Revision-Date: 2017-10-18 11:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -15,39 +15,39 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: SimpleMailerConfig.php:194
+#: SimpleMailerConfig.php:199
 msgid "Please enter the sender email address."
 msgstr "Bitte geben Sie die E-Mail-Adresse des Absenders ein."
 
-#: SimpleMailerConfig.php:198
+#: SimpleMailerConfig.php:203
 msgid "Please enter a valid email address of the sender."
 msgstr "Bitte geben Sie eine gültige E-Mail-Adresse des Absenders ein."
 
-#: SimpleMailerConfig.php:206
+#: SimpleMailerConfig.php:211
 msgid "Please enter SMTP host name."
 msgstr "Bitte geben Sie SMTP-Hostname ein."
 
-#: SimpleMailerConfig.php:209
+#: SimpleMailerConfig.php:214
 msgid "Please enter the SMTP port number."
 msgstr "Bitte geben Sie SMTP-Port-Nummer ein."
 
-#: SimpleMailerConfig.php:212
+#: SimpleMailerConfig.php:217
 msgid "Please enter your SMTP username."
 msgstr "Bitte geben Sie SMTP-Benutzername ein."
 
-#: SimpleMailerConfig.php:215
+#: SimpleMailerConfig.php:220
 msgid "Please enter your SMTP password."
 msgstr "Bitte geben Sie SMTP-Passwort ein."
 
-#: SimpleMailerConfig.php:223
+#: SimpleMailerConfig.php:228
 msgid "Please enter the reCAPTCHA site key."
 msgstr "Bitte geben Sie reCAPTCHA-Websiteschlüssel ein."
 
-#: SimpleMailerConfig.php:226
+#: SimpleMailerConfig.php:231
 msgid "Please enter reCAPTCHA secret key."
 msgstr "Bitte geben Sie reCAPTCHA-Geheimen Schlüssel ein."
 
-#: SimpleMailerConfig.php:312
+#: SimpleMailerConfig.php:317
 msgid ""
 "The settings may not have been saved completely. Turn error reporting on to "
 "get more detailed error information in the debug.log file."
@@ -56,7 +56,7 @@ msgstr ""
 "Aktivieren Sie WordPress \"error reporting\", um detailliertere "
 "Fehlerinformationen in der debug.log Datei zu erhalten."
 
-#: SimpleMailerConfig.php:315
+#: SimpleMailerConfig.php:320
 msgid "SimpleMailer settings have been saved successfully."
 msgstr "SimpleMailer-Einstellungen wurden erfolgreich gespeichert."
 
@@ -121,7 +121,7 @@ msgid "Website name to be used for email transmission."
 msgstr "Name der Website, der für den E-Mail-Versand verwendet werden soll."
 
 #: SimpleMailerProcessor.php:451
-msgid "E-mail settings"
+msgid "Email settings"
 msgstr "E-Mail-Einstellungen"
 
 #: SimpleMailerProcessor.php:453 SimpleMailerProcessor.php:585

@@ -4,7 +4,7 @@
 * Plugin URI: https://ehret-studio.com/lab/simplemailer-kontaktformular-plugin-fur-wordpress/
 * Description: SimpleMailer - Contact form plugin
 * Version: 0.9
-* Author: Juri Ehret
+* Author: Bigin (J. Ehret)
 * Author URI: https://ehret-studio.com
 * License: GPLv2 or later
 */

@@ -448,7 +448,7 @@ class SimpleMailerProcessor
 					</div>
 					<div class="field-group-compresser">
 						<fieldset>
-							<legend><?php echo __('E-mail settings', 'sm'); ?></legend>
+							<legend><?php echo __('Email settings', 'sm'); ?></legend>
 							<div class="form-group">
 								<label for="emailfrom"><?php echo __('Email Address', 'sm'); ?> <span class="required">*</span></label><br>
 								<p class="field-info"><?php echo
